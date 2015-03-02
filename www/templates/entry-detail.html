@@ -1,0 +1,24 @@
+<ion-view view-title="{{chat.name}}">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item">
+        <h2>{{ entry.headline }}</h2>
+        <p>{{ entry.company }}</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" ng-src="{{ entry.image.default.url }}">
+        <p>
+          {{ entry.description }}
+        </p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="{{ entry.url }}" ng-show="entry.url">
+          <i class="icon ion-share"></i>
+          Visit Homepage
+        </a>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

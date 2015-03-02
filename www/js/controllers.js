@@ -7,15 +7,12 @@ angular.module('starter.controllers', [])
   $scope.entry = Entries.get($scope, uuid, major, minor);
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
+.controller('EntriesCtrl', function($scope, Entries) {
+  Entries.all($scope);
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('EntryDetailCtrl', function($scope, $stateParams, Entries) {
+  Entries.get($scope, $stateParams.uuid, $stateParams.major, $stateParams.minor);
 })
 
 .controller('FriendsCtrl', function($scope, Friends) {
