@@ -4,15 +4,19 @@ angular.module('starter.controllers', [])
   var uuid = '123';
   var major = '456';
   var minor = '789';
-  $scope.entry = Entries.get($scope, uuid, major, minor);
+  Entries.get(uuid, major, minor).then(function(d) {
+    $scope.entry = d;
+  });
 })
 
 .controller('EntriesCtrl', function($scope, Entries) {
-  Entries.all($scope);
+  $scope.entries = Entries.all().then(function(d) { $scope.entries = d; });
 })
 
 .controller('EntryDetailCtrl', function($scope, $stateParams, Entries) {
-  Entries.get($scope, $stateParams.uuid, $stateParams.major, $stateParams.minor);
+  Entries.get($stateParams.uuid, $stateParams.major, $stateParams.minor).then(function(d) {
+    $scope.entry = d;
+  });
 })
 
 .controller('FriendsCtrl', function($scope, Friends) {
