@@ -12,6 +12,9 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
+    <script src="lib/localforage/dist/localforage.min.js"></script>
+    <script src="lib/angular-localforage/dist/angular-localForage.min.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -21,10 +24,16 @@
     <script src="js/services.js"></script>
   </head>
   <body ng-app="starter">
+
+    <div ng-controller="RangingCtrl" style="display: none;">
+      <p>Region UUID: {{ regionJson.uuid }}</p>
+      <p>Region: {{ region }}</p>
+      <p>Beacon: {{ currentBeacon }}</p>
+    </div>
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-dark">
+    <ion-nav-bar class="bar-light">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>

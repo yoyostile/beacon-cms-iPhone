@@ -9,9 +9,8 @@ angular.module('starter.services', [])
       });
     },
     get: function(uuid, major, minor) {
-      return $http.get('http://beacon-cms.herokuapp.com/' + uuid + '/' + major + '/' + minor + '.json').
+      return $http.get('http://beacon-cms.herokuapp.com/' + uuid.toLowerCase() + '/' + major + '/' + minor + '.json').
       then(function(response) {
-        console.log(response.data.entry);
         return response.data.entry;
       });
     }
