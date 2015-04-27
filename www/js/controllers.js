@@ -1,11 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, Entries) {
+.controller('DashCtrl', function($scope, Entries, EventLogs) {
   $scope.currentBeacon = undefined;
   $scope.lastDate = new Date();
 
   $scope.getEntry = function(beacon) {
     console.log('CURRENT BEACON:' + JSON.stringify(beacon));
+    EventLogs.post(beacon.uuid, beacon.major, beacon.minor, beacon.proximity, beacon.rssi);
     Entries.get(beacon.uuid, beacon.major, beacon.minor).then(function(d) {
       $scope.entry = d;
       console.log('[DOM] DashCtrl -> Entries get promise: ' + JSON.stringify(d));
